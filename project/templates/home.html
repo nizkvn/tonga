@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <a class="navbar-brand text-white mr-5" href="https://bongdaplus.vn/"><img src="https://lh3.googleusercontent.com/proxy/UJlOYyU2TYFOUsmdM-c7zE_iMWUHFgd_U2naSiqbay906Cx1hqw5i3adwQulBjHh4H0hvysLF7x_MpDCO97Jg_hfHWfN5V0Iel0ciHCmL7Wfx-JFcJu3p2lw9U_xTVlw3xHlPbfbWRrnpyj7PJjHLcnd5MTjTXFv-x4IRI9EhU813YXr3w" width="8%" alt="logo"> BONGDAPLUS.VN</a>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 bg-white" type="submit">Search</button>
+        </form>
+            
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            {% for primary in data_primary %}
+            <div class="row my-3">
+                <nav class="navbar navbar-dark bg-danger w-100 my-2">
+                    <a class="navbar-brand" href="{{ primary[0].link }}">{{ primary[0].title }}</a>
+                </nav>
+                <div class="col-6">
+                    <div class="card w-100">
+                        <a href="{{ primary[1].link }}">
+                            <img class="card-img-top" src="{{ primary[1].img_url }}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark">{{ primary[1].title}}</h5>
+                                <p class="card-text text-dark">{{ primary[1].description}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    {% for new in primary[2] %}
+                    <a href="{{ new.link }}">
+                        <div class="row my-2">
+
+                            <div class="col">
+                                <img src="{{ new.img_url }}" alt="image">
+                            </div>
+                            <div class="col">
+                                <h6 class="text-dark text-center">{{ new.title}}</h6>
+                            </div>
+
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <div class="card-columns mt-5">
+                {% for cat in data_cat %}
+                <div class="card px-3 py-3">
+                    <nav class="navbar navbar-dark bg-danger my-2">
+                        <a class="navbar-brand" href="{{ cat[0].link }}">{{ cat[0].title }}</a></nav>
+                    <a href="{{cat[1].link}}">
+                        <img class="card-img-top" src="{{cat[1].img_url}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">{{cat[1].title}}</h5>
+                    </a>
+                    <ul>
+                        {% for new in cat[2]%}
+                        <li><a class="text-dark d-block" href="{{new.link}}">{{new.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
